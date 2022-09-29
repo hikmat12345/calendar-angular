@@ -1,0 +1,48 @@
+
+<div class="container"> 
+  <!-- card  -->
+	<div class="card">
+		<div class="card-image">	
+			<h2 class="card-heading">
+				Get started
+				<small>Let us create a phone book.</small>
+			</h2>
+      <h4 class="card-heading">
+        <!-- show result here     -->
+        <div *ngIf="storeFormValues.length">
+         
+          <div class="book-list" *ngFor="let list of storeFormValues; let i = index">
+            <p>{{i+1}}) First Name : <span>{{  list.firstname }} {{" "}} </span></p>
+            <p> lastName   : <span> {{ list.lastname }} {{" "}} </span></p>
+            <p> phoneNumber: <span> {{ list.phonenumber }} </span></p> 
+        </div>
+      </div> 
+      </h4> 
+		</div>
+    <!-- input form  -->
+    <form [formGroup]="addFormData"  class="card-form"  (ngSubmit)="SubmitForm(addFormData.value)">
+       <div class="input">
+        <input type="text" formControlName="firstname" required   name="firstName" id="firstName" class="input-field">
+        <label for="firstName" class="input-lable">First name</label>
+      </div>
+      <div class="input">
+        <input type="text" formControlName="lastname"  required  name="lastname" id="lastname" class="input-field">
+        <label for="lastname" class="input-label">Last name</label>
+      </div>
+      <div class="input">
+        <input    formControlName="phonenumber" required  type="number" name="phonenumber" id="phonenumber" placeholder=""class="input-field">
+        <label for="phonenumber"  class="input-label">Phone number</label>
+      </div>
+      <div class="action">
+        <!-- submit button  -->
+         <input type="submit" value="submit" class="action-button">
+		   	 <br><br>
+         <button (click)="setReset()" class="action-button">Reset</button>
+      </div> 	 
+		</form>
+		<div class="card-info">
+			<p>Lorum Ipsum is a simpley dummy text<a href="#">Terms and Conditions</a></p>
+		</div>
+	</div>
+</div>
+
